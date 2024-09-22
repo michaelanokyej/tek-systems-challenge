@@ -1,6 +1,6 @@
 # Technical Challenge Solution Overview
 
-This repository contains my solutions to a comprehensive technical challenge designed to assess my expertise in three key areas: cybersecurity, container security, and CI/CD pipeline management. The challenge is structured into three sections:
+This repository contains my solutions to the comprehensive technical challenge designed to assess my expertise in three key areas: cybersecurity, container security, and CI/CD pipeline management. The challenge is structured into three sections:
 
 ## Cybersecurity Measures for a Financial Company
 I designed and documented security strategies tailored to a financial services scenario, focusing on risk mitigation, data protection, and compliance with industry standards.
