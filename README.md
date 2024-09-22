@@ -1,4 +1,17 @@
-# tek-systems-challenge
+# Technical Challenge Solution Overview
+
+This repository contains my solutions to a comprehensive technical challenge designed to assess my expertise in three key areas: cybersecurity, container security, and CI/CD pipeline management. The challenge is structured into three sections:
+
+## Cybersecurity Measures for a Financial Company
+I designed and documented security strategies tailored to a financial services scenario, focusing on risk mitigation, data protection, and compliance with industry standards.
+
+## Container Security in Docker and Kubernetes
+I implemented security best practices for containerized applications, covering essential aspects such as secure image management, runtime security, and network segmentation within Docker and Kubernetes environments.
+
+## CI/CD Pipeline Setup Using Jenkins and Ansible
+I configured an automated CI/CD pipeline for the deployment of a web server. This involved using Jenkins and Ansible to streamline the process, ensuring efficient and secure delivery within a cloud-native environment.
+
+Each part showcases best practices and effective use of DevOps tools, demonstrating a holistic approach to cloud-native security and automation.
 
 # Part 1: Cybersecurity Scenario
 
