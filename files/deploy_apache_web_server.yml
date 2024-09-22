@@ -1,0 +1,25 @@
+---
+- name: Deploy Apache Web Server on an Ubuntu VM
+  hosts: webservers
+  become: yes  # Ensure you have sudo privileges
+
+  tasks:
+    - name: Install Apache
+      apt:
+        name: apache2
+        state: present
+        update_cache: yes
+
+    - name: Start Apache Service
+      systemd:
+        name: apache2
+        state: started
+        enabled: yes
+
+    - name: Copy Index Page
+      copy:
+        src: /path/to/index.html
+        dest: /var/www/html/index.html
+        owner: www-data
+        group: www-data
+        mode: '0644'

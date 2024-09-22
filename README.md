@@ -1,6 +1,6 @@
 # tek-systems-challenge
 
-# Cybersecurity Scenario
+# Part 1: Cybersecurity Scenario
 
 ## Task 1: Threat Intelligence Report
 
@@ -36,7 +36,7 @@ An unpatched vulnerability, such as one found in the web framework or libraries 
 - **Firewalls and Network Segmentation:** Leverage AWS security groups and network access control lists (ACLs) to design a segmented network structure. This approach minimizes the potential impact of any security breach by limiting unauthorized access to other parts of the network. Proper segmentation ensures that even if a part of the network is compromised, the damage is contained.
 - **Zero Trust Architecture:** Adopt a Zero Trust model by implementing strict user authentication and authorization controls through AWS Identity and Access Management (IAM). This ensures that every application and system access request is authenticated, verified, and authorized, regardless of whether the request originates inside or outside the network. In this model, no one is implicitly trusted, enhancing overall security.
 
-# Container Security Implementation
+# Part 2: Container Security Implementation
 
 ## Task 1: Docker Security Best Practices
 
@@ -70,10 +70,9 @@ USER myuser
 
 # Run app.py when the container launches
 CMD ["python", "app.py"]
+```
 
-# Kubernetes Security Configuration
-
-## Task 2: Key Security Features
+## Task 2: Kubernetes Security Configuration - Key Security Features
 
 ### Role-Based Access Control (RBAC)
 RBAC manages access to the Kubernetes API, allowing you to define which users or services can perform specific actions. It helps ensure that only authorized entities can access and modify your Kubernetes resources, limiting the potential for unauthorized changes or breaches.
@@ -100,10 +99,11 @@ spec:
       allowPrivilegeEscalation: false
     ports:
     - containerPort: 80
+```
 
-# Task 3: IaaS Security Measures
+## Task 3: IaaS Security Measures
 
-## Explanation of IaaS and Its Security Implications
+### Explanation of IaaS and Its Security Implications
 Infrastructure as a Service (IaaS) provides users with virtualized computing resources, such as servers, storage, and networking, delivered over the internet. This model allows businesses to rent infrastructure on a pay-as-you-go basis without the need to manage physical hardware. While IaaS offers flexibility and scalability, it introduces security responsibilities for both the provider and the customer.
 
 ## Key Security Implications
@@ -121,3 +121,28 @@ Properly configuring network security features such as firewalls, security group
 Strong authentication mechanisms, such as multi-factor authentication (MFA), should be enforced. Additionally, following the principle of least privilege ensures that users and services have only the permissions necessary to perform their tasks, minimizing the risk of insider threats or external attacks.
 
 By applying these measures, organizations can securely manage their IaaS environments while protecting sensitive data and maintaining compliance with industry standards.
+
+# Part 3: CI/CD Pipeline Setup
+
+## Task 1: Configuration Management with Ansible
+
+### Ansible Playbook for Web Server Deployment
+An Ansible Playbook to automate the deployment of a web server can be found at [`deploy_apache_web_server.yml`](files/deploy_apache_web_server.yml).
+
+**Explanation:**
+This playbook is designed to automate the installation and configuration of Apache on a group of servers categorized under "webservers" in the Ansible inventory. It ensures that Apache is correctly installed, that the service is both started and configured to run on system boot, and finally, it deploys a custom index page to serve content. This provides an efficient way to manage and standardize Apache web servers across multiple machines.
+
+## Task 2: CI/CD Pipeline Configuration with Jenkins
+
+### Jenkins Pipeline Configuration
+A Jenkins Pipeline configuration (Jenkinsfile) can be found at [`azure_ci_cd_pipeline.Jenkinsfile`](files/azure_ci_cd_pipeline.Jenkinsfile).
+
+**Key Points in Jenkinsfile:**
+- **Checkout:** Pulls the latest code from the source control management (SCM) system.
+- **Build:** Compiles the application and packages it, demonstrated here with Maven for a Java application.
+- **Security Scan:** Implements a security scan using OWASP ZAP, a popular open-source security tool.
+- **Test:** Runs unit tests on the application.
+- **Deploy to Azure:** Executes a script that deploys the application to Azure, leveraging environment-specific credentials.
+- **Post-Build Actions:** Archives artifacts like the build JAR and the security scan report. Sends email notifications based on the build outcome.
+
+This Jenkins pipeline provides a comprehensive CI/CD workflow, ensuring that your application is built, tested, securely scanned, and deployed efficiently to Azure.
