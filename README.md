@@ -70,3 +70,54 @@ USER myuser
 
 # Run app.py when the container launches
 CMD ["python", "app.py"]
+
+# Kubernetes Security Configuration
+
+## Task 2: Key Security Features
+
+### Role-Based Access Control (RBAC)
+RBAC manages access to the Kubernetes API, allowing you to define which users or services can perform specific actions. It helps ensure that only authorized entities can access and modify your Kubernetes resources, limiting the potential for unauthorized changes or breaches.
+
+### Network Policies
+Network Policies define how pods can communicate with each other and external services. By specifying which traffic is allowed or denied between groups of pods or network endpoints, you can limit exposure and reduce the attack surface within your cluster.
+
+### Pod Security Policies (PSP)
+Pod Security Policies govern various security-related aspects of pod configuration. For example, they can enforce restrictions like running pods as non-root users, preventing privilege escalation, and controlling access to host resources. These policies ensure that your pods operate in a secure and controlled manner.
+
+### Kubernetes YAML Configuration with securityContext
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: secure-app-pod
+spec:
+  containers:
+  - name: secure-app-container
+    image: secureapp:1.0
+    securityContext:
+      runAsNonRoot: true
+      readOnlyRootFilesystem: true
+      allowPrivilegeEscalation: false
+    ports:
+    - containerPort: 80
+
+# Task 3: IaaS Security Measures
+
+## Explanation of IaaS and Its Security Implications
+Infrastructure as a Service (IaaS) provides users with virtualized computing resources, such as servers, storage, and networking, delivered over the internet. This model allows businesses to rent infrastructure on a pay-as-you-go basis without the need to manage physical hardware. While IaaS offers flexibility and scalability, it introduces security responsibilities for both the provider and the customer.
+
+## Key Security Implications
+
+### Shared Responsibility Model
+In IaaS, the cloud provider is responsible for securing the physical infrastructure, including hardware, network, and the virtualization layer. However, the customer must manage the security of the operating systems, applications, and data running on top of the IaaS environment. This includes patching systems, monitoring logs, and managing access controls.
+
+### Data Security
+To protect sensitive information, it is essential to encrypt data both at rest and in transit. This ensures that even if data is intercepted or accessed by unauthorized parties, it remains unreadable without the appropriate decryption keys.
+
+### Network Security
+Properly configuring network security features such as firewalls, security groups, and network access control lists (ACLs) is critical to protecting the perimeter and internal communications. These controls help regulate what traffic is allowed into and out of your cloud infrastructure, reducing the risk of unauthorized access.
+
+### Access Controls
+Strong authentication mechanisms, such as multi-factor authentication (MFA), should be enforced. Additionally, following the principle of least privilege ensures that users and services have only the permissions necessary to perform their tasks, minimizing the risk of insider threats or external attacks.
+
+By applying these measures, organizations can securely manage their IaaS environments while protecting sensitive data and maintaining compliance with industry standards.
